@@ -1,0 +1,3 @@
+..\source\BSP\tools\hex2bin.exe  ..\output\@L.hex
+
+默认目录为keil工程文件名所在的目录

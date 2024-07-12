@@ -1,0 +1,242 @@
+(kicad_sch (version 20230121) (generator eeschema)
+
+  (uuid cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea)
+
+  (paper "A4")
+
+  (title_block
+    (title "ChronoVolt_Control")
+    (date "2024-06-05")
+    (rev "0.3")
+    (company "Final Resolution")
+  )
+
+  (lib_symbols
+  )
+
+
+  (sheet (at 177.8 50.8) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 2c82cc8a-d941-4fe9-9aeb-579d54d6db01)
+    (property "Sheetname" "POWER_SY8089AAAC" (at 177.8 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "POWER_SY8089AAAC.kicad_sch" (at 177.8 76.7846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "4"))
+      )
+    )
+  )
+
+  (sheet (at 25.4 50.8) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 3da81a5b-1441-43b1-be41-04d0e39b3554)
+    (property "Sheetname" "USB_Type-C" (at 25.4 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "USB_Type-C.kicad_sch" (at 25.4 76.7846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "2"))
+      )
+    )
+  )
+
+  (sheet (at 76.2 127) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 3f55c0a7-9882-4f9a-8bc5-6a2cd49d37e3)
+    (property "Sheetname" "AUDIO" (at 76.2 126.2884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "AUDIO.kicad_sch" (at 76.2 152.9846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "12"))
+      )
+    )
+  )
+
+  (sheet (at 127 50.8) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 3f8f4fb8-0000-4470-9a78-22eb5d7259c1)
+    (property "Sheetname" "TestPoint" (at 127 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "TestPoint.kicad_sch" (at 127 76.7846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "6"))
+      )
+    )
+  )
+
+  (sheet (at 177.8 88.9) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 52f3fa97-f0ad-4da8-8868-02ee2574106a)
+    (property "Sheetname" "SENSOR" (at 177.8 88.1884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "SENSOR.kicad_sch" (at 177.8 114.8846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "9"))
+      )
+    )
+  )
+
+  (sheet (at 228.6 50.8) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 53ce2852-a300-4813-82e6-0de13122df9f)
+    (property "Sheetname" "MCU_ESP32-WROOM" (at 228.6 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "MCU_ESP32-WROOM.kicad_sch" (at 228.6 76.7846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "5"))
+      )
+    )
+  )
+
+  (sheet (at 25.4 127) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 55e07237-0444-4317-824a-6ddd5bba4a1f)
+    (property "Sheetname" "LED" (at 25.4 126.2884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "LED.kicad_sch" (at 25.4 152.9846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "10"))
+      )
+    )
+  )
+
+  (sheet (at 228.6 88.9) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 8abcd0a2-67b8-4e2f-89b1-c04d6c17104c)
+    (property "Sheetname" "KEY" (at 228.6 88.1884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "KEY.kicad_sch" (at 228.6 114.8846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "13"))
+      )
+    )
+  )
+
+  (sheet (at 76.2 50.8) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid 999c5c21-5c80-44df-94eb-f849b60945ca)
+    (property "Sheetname" "UART_CH340C" (at 76.2 50.0884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "UART_CH340C.kicad_sch" (at 76.2 76.7846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "3"))
+      )
+    )
+  )
+
+  (sheet (at 76.2 88.9) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid a580061a-a1a9-4ffd-980e-7e30cdbca363)
+    (property "Sheetname" "CHARGE_IP5306" (at 76.2 88.1884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "CHARGE_IP5306.kicad_sch" (at 76.2 114.8846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "8"))
+      )
+    )
+  )
+
+  (sheet (at 127 88.9) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid defdb9b9-2fd5-4b10-9f5b-da5bb2e4a6b5)
+    (property "Sheetname" "CON_PIN" (at 127 88.1884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "CON_PIN.kicad_sch" (at 127 114.8846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "12"))
+      )
+    )
+  )
+
+  (sheet (at 127 127) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid f8938d1a-b9d5-4ef3-9b50-940da7807462)
+    (property "Sheetname" "HOLE" (at 127 126.2884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "HOLE.kicad_sch" (at 127 152.9846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "14"))
+      )
+    )
+  )
+
+  (sheet (at 25.4 88.9) (size 38.1 25.4) (fields_autoplaced)
+    (stroke (width 0.1524) (type solid))
+    (fill (color 0 0 0 0.0000))
+    (uuid fe95f184-f8c0-49a3-9a0b-ae7318652a9d)
+    (property "Sheetname" "RTC_PCF8563" (at 25.4 88.1884 0)
+      (effects (font (size 1.27 1.27)) (justify left bottom))
+    )
+    (property "Sheetfile" "RTC_PCF8563.kicad_sch" (at 25.4 114.8846 0)
+      (effects (font (size 1.27 1.27)) (justify left top))
+    )
+    (instances
+      (project "ChronoVolt_Control"
+        (path "/cceb3d39-99f1-4cc7-aa1d-f414cbebc8ea" (page "7"))
+      )
+    )
+  )
+
+  (sheet_instances
+    (path "/" (page "1"))
+  )
+)

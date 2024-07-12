@@ -1,0 +1,139 @@
+C51 COMPILER V9.59.0.0   FONT_SEG13                                                        11/01/2019 02:07:42 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE FONT_SEG13
+OBJECT MODULE PLACED IN ..\output\font_seg13.obj
+COMPILER INVOKED BY: C:\soft\Keil_v5\C51\BIN\C51.EXE ..\source\devices\font_seg13.c OPTIMIZE(8,SPEED) BROWSE DEFINE(FOSC
+                    -_160000) DEBUG OBJECTEXTEND PRINT(.\Listings\font_seg13.lst) TABS(2) OBJECT(..\output\font_seg13.obj)
+
+line level    source
+
+   1          /**
+   2           * @file font_seg13.c
+   3           * @author mangolu (mangolu81@gmail.com)
+   4           * @brief 13段数码管共阴型字库定义
+   5           * @version 1.0.0
+   6           * @date 2019-08-05
+   7           * 
+   8           * @copyright Copyright (c) 2019 mangolu All rights reserved
+   9           * 
+  10           */
+  11          #include "font_seg13.h"
+  12          
+  13          /** 字符码表定义 */
+  14          unsigned int code SEG13_Char_Code[96] = {
+  15            SEG13_CHAR_SP,        /** (space) */
+  16            SEG13_CHAR_EXCLA,         /** ! */
+  17            SEG13_CHAR_DOUBL,         /** " */
+  18            SEG13_CHAR_NUMBE,         /** # */
+  19            SEG13_CHAR_DOLLA,         /** $ */
+  20            SEG13_CHAR_PERCE,         /** % */
+  21            SEG13_CHAR_AMPER,         /** & */
+  22            SEG13_CHAR_SINGL,         /** ' */
+  23            SEG13_CHAR_LEFTP,         /** ( */
+  24            SEG13_CHAR_RIGHP,         /** ) */
+  25            SEG13_CHAR_ASTER,     /** * */
+  26            SEG13_CHAR_PLUS,      /** + */
+  27            SEG13_CHAR_COMMA,     /** , */
+  28            SEG13_CHAR_DASH,      /** - */
+  29            SEG13_CHAR_DOT,       /** . */
+  30            SEG13_CHAR_FSLAS,     /** / */
+  31            SEG13_CHAR_0,           /** 0 */
+  32            SEG13_CHAR_1,           /** 1 */
+  33            SEG13_CHAR_2,           /** 2 */
+  34            SEG13_CHAR_3,           /** 3 */
+  35            SEG13_CHAR_4,           /** 4 */
+  36            SEG13_CHAR_5,           /** 5 */
+  37            SEG13_CHAR_6,           /** 6 */
+  38            SEG13_CHAR_7,           /** 7 */
+  39            SEG13_CHAR_8,           /** 8 */
+  40            SEG13_CHAR_9,           /** 9 */
+  41            SEG13_CHAR_COLON,     /** : */
+  42            SEG13_CHAR_SEMIC,     /** ; */
+  43            SEG13_CHAR_LESST,     /** < */
+  44            SEG13_CHAR_EQUAL,     /** = */
+  45            SEG13_CHAR_MORET,     /** > */
+  46            SEG13_CHAR_QUEST,     /** ? */
+  47            SEG13_CHAR_AT,        /** @ */
+  48            SEG13_CHAR_A,             /** A */
+  49            SEG13_CHAR_B,             /** B */
+  50            SEG13_CHAR_C,             /** C */
+  51            SEG13_CHAR_D,             /** D */
+  52            SEG13_CHAR_E,             /** E */
+  53            SEG13_CHAR_F,             /** F */
+  54            SEG13_CHAR_G,             /** G */
+C51 COMPILER V9.59.0.0   FONT_SEG13                                                        11/01/2019 02:07:42 PAGE 2   
+
+  55            SEG13_CHAR_H,             /** H */
+  56            SEG13_CHAR_I,             /** I */
+  57            SEG13_CHAR_J,             /** J */
+  58            SEG13_CHAR_K,             /** K */
+  59            SEG13_CHAR_L,             /** L */
+  60            SEG13_CHAR_M,             /** M */
+  61            SEG13_CHAR_N,             /** N */
+  62            SEG13_CHAR_O,             /** O */
+  63            SEG13_CHAR_P,             /** P */
+  64            SEG13_CHAR_Q,             /** Q */
+  65            SEG13_CHAR_R,             /** R */
+  66            SEG13_CHAR_S,             /** S */
+  67            SEG13_CHAR_T,             /** T */
+  68            SEG13_CHAR_U,             /** U */
+  69            SEG13_CHAR_V,             /** V */
+  70            SEG13_CHAR_W,             /** W */
+  71            SEG13_CHAR_X,             /** X */
+  72            SEG13_CHAR_Y,             /** Y */
+  73            SEG13_CHAR_Z,             /** Z */
+  74            SEG13_CHAR_LOBRA,         /** [ */
+  75            SEG13_CHAR_BSLAS,         /** \ */
+  76            SEG13_CHAR_ROBRA,         /** ] */
+  77            SEG13_CHAR_CARET,         /** ^ */
+  78            SEG13_CHAR_USCOR,         /** _ */
+  79            SEG13_CHAR_BQUOT,         /** ` */
+  80            SEG13_CHAR_a,           /** a */
+  81            SEG13_CHAR_b,           /** b */
+  82            SEG13_CHAR_c,           /** c */
+  83            SEG13_CHAR_d,           /** d */
+  84            SEG13_CHAR_e,       /** e */
+  85            SEG13_CHAR_f,       /** f */
+  86            SEG13_CHAR_g,       /** g */
+  87            SEG13_CHAR_h,       /** h */
+  88            SEG13_CHAR_i,       /** i */
+  89            SEG13_CHAR_j,       /** j */
+  90            SEG13_CHAR_k,       /** k */
+  91            SEG13_CHAR_l,             /** l */
+  92            SEG13_CHAR_m,             /** m */
+  93            SEG13_CHAR_n,             /** n */
+  94            SEG13_CHAR_o,             /** o */
+  95            SEG13_CHAR_p,             /** p */
+  96            SEG13_CHAR_q,             /** q */
+  97            SEG13_CHAR_r,             /** r */
+  98            SEG13_CHAR_s,             /** s */
+  99            SEG13_CHAR_t,             /** t */
+ 100            SEG13_CHAR_u,             /** u */
+ 101            SEG13_CHAR_v,             /** v */
+ 102            SEG13_CHAR_w,             /** w */
+ 103            SEG13_CHAR_x,             /** x */
+ 104            SEG13_CHAR_y,             /** y */
+ 105            SEG13_CHAR_z,             /** z */
+ 106            SEG13_CHAR_LBRAC,         /** { */
+ 107            SEG13_CHAR_VERTI,         /** | */
+ 108            SEG13_CHAR_RBRAC,         /** } */
+ 109            SEG13_CHAR_TILDE,         /** ~ */
+ 110            SEG13_CHAR_DEL,           /** (del) */
+ 111          };
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =    192    ----
+C51 COMPILER V9.59.0.0   FONT_SEG13                                                        11/01/2019 02:07:42 PAGE 3   
+
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

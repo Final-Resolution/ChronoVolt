@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "ChronoVolt_Lib")(type "KiCad")(uri "${KIPRJMOD}/libraries/ChronoVolt_Lib.kicad_sym")(options "")(descr ""))
+  (lib (name "Final_MIX-EXP_Lib")(type "KiCad")(uri "${KIPRJMOD}/libraries/Final_MIX-EXP_Lib.kicad_sym")(options "")(descr ""))
+)

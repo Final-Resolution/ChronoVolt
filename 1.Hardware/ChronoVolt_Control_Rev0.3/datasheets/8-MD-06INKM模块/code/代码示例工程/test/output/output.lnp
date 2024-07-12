@@ -1,0 +1,10 @@
+"..\output\STARTUP.obj",
+"..\output\main.obj",
+"..\output\font_seg13.obj",
+"..\output\common.obj",
+"..\output\initial.obj",
+"..\output\clock.obj",
+"..\output\sfr_macro.obj",
+"..\output\vfd_8md06inkm.obj" 
+TO "..\output\output" 
+PRINT(".\Listings\output.m51") RAMSIZE(256) 

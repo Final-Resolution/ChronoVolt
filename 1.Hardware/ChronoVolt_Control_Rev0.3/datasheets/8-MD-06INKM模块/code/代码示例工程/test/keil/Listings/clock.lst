@@ -1,0 +1,171 @@
+C51 COMPILER V9.59.0.0   CLOCK                                                             11/01/2019 02:07:43 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE CLOCK
+OBJECT MODULE PLACED IN ..\output\clock.obj
+COMPILER INVOKED BY: C:\soft\Keil_v5\C51\BIN\C51.EXE ..\source\n76e003\clock.c OPTIMIZE(8,SPEED) BROWSE DEFINE(FOSC_1600
+                    -00) DEBUG OBJECTEXTEND PRINT(.\Listings\clock.lst) TABS(2) OBJECT(..\output\clock.obj)
+
+line level    source
+
+   1          /**
+   2           * @file clock.c
+   3           * @author mangolu (mangolu81@gmail.com)
+   4           * @brief 系统时钟设置及切换函数实现
+   5           * @version 1.0.0
+   6           * @date 2019-04-21
+   7           *
+   8           * @copyright Copyright (c) 2019 mangolu All righits reserved
+   9           *
+  10           */
+  11          /** 所需头文件开始>>> */
+  12          
+  13          #include "N76E003.h"  /** N76E003寄存器定义头文件 */
+  14          #include "sfr_macro.h"  /** N76E003特殊功能寄存器操作宏定义头文件 */
+  15          #include "../common/stdint.h" /** 标准数据类型定义头文件 */
+  16          #include "../common/common.h" /** 通用操作设置定义头文件 */
+  17          #include "clock.h"  /** 系统时钟设置及切换函数定义头文件 */
+  18          
+  19          /** 所需头文件结束<<< */
+  20          
+  21          /** 需要自行定义部分开始>>> */
+  22          
+  23          /** 需要自行定义部分结束<<< */
+  24          
+  25          /**
+  26           * @brief 系统时钟选择设置函数
+  27           * 内部16MHz RC振荡器，上电默认开启，是默认的系统时钟源
+  28           * 内部10KHz RC振荡器，上电默认开启
+  29           *
+  30           * @param SYSTEM_CLOCK clock 系统时钟类型
+  31           */
+  32          void System_Clock_Select(SYSTEM_CLOCK clock) {
+  33   1        switch (clock) {
+  34   2          /** 内部16MHz RC振荡器，上电默认开启，默认的系统时钟源 */
+  35   2          case High_Speed_Internal_RC:
+  36   2            /** 1、使能内部16MHz RC振荡器 */
+  37   2            set_HIRCEN;
+  38   2      
+  39   2            /** 2、检查时钟源开启并稳定 */
+  40   2            while((CKSWT & SET_BIT5) == 0);
+  41   2      
+  42   2            /** 3、切换时钟源 */
+  43   2            clr_OSC1;
+  44   2            clr_OSC0;
+  45   2            break;
+  46   2      
+  47   2          /** 内部10KHz RC振荡器，上电默认开启 */
+  48   2          case Low_Speed_Internal_RC:
+  49   2            /** 1、使能内部10KHz RC振荡器 */
+  50   2            // set_LIRCEN;
+  51   2      
+  52   2            /** 2、检查时钟源开启并稳定 */
+  53   2            while((CKSWT & SET_BIT4) == 0);
+  54   2      
+C51 COMPILER V9.59.0.0   CLOCK                                                             11/01/2019 02:07:43 PAGE 2   
+
+  55   2            /** 3、切换时钟源 */
+  56   2            set_OSC1;
+  57   2            clr_OSC0;
+  58   2            break;
+  59   2      
+  60   2          /** 外部时钟输入 */
+  61   2          case External_OSC:
+  62   2            /** 1、使能外部时钟源 */
+  63   2            set_EXTEN1;
+  64   2            set_EXTEN0;
+  65   2      
+  66   2            /** 2、检查时钟源开启并稳定 */
+  67   2            while((CKSWT & SET_BIT3) == 0);
+  68   2      
+  69   2            /** 3、切换时钟源 */
+  70   2            clr_OSC1;
+  71   2            set_OSC0;
+  72   2            break;
+  73   2      
+  74   2          default:
+  75   2            break;
+  76   2        }
+  77   1      
+  78   1        /** 4、等待时钟源切换成功 */
+  79   1        while((CKEN & SET_BIT0) == 1);
+  80   1      }
+  81          
+  82          /**
+  83           * @brief 系统时钟分频
+  84           * 系统时钟分频除了不能在中断中改变，可以在任何时刻改变。
+  85           *
+  86           * @param uint8_t u8Div，系统时钟分频值，为0x00~0xFF大小的数值
+  87           * 当u8Div = 0x00时，FSYS = FOSC，即不分频。
+  88           * 当u8Div = 0x01~0xFF时，FSYS = FOSC / (2 * u8Div)，最大为 2* 0xFF即510分频值。
+  89           */
+  90          void System_Clock_Divid(uint8_t u8Div) {
+  91   1        CKDIV = u8Div;
+  92   1      }
+  93          
+  94          /**
+  95           * @brief 从P1.1(Pin14)输出系统时钟
+  96           *
+  97           * @param uint8_t u8On_Off，从P1.1输出或关闭输出系统时钟。
+  98           * ON(即1)为输出，OFF(即0)为不输出。
+  99           */
+ 100          void System_Clock_Output(uint8_t u8On_Off) {
+ 101   1        switch (u8On_Off) {
+ 102   2          /** 从P1.1输出系统时钟 */
+ 103   2          case ON:
+ 104   2            set_CLOEN;
+ 105   2            break;
+ 106   2      
+ 107   2          /** 不从P1.1输出系统时钟 */
+ 108   2          case OFF:
+ 109   2            clr_CLOEN;
+ 110   2            break;
+ 111   2      
+ 112   2          default:
+ 113   2            break;
+ 114   2        }
+ 115   1      }
+ 116          
+C51 COMPILER V9.59.0.0   CLOCK                                                             11/01/2019 02:07:43 PAGE 3   
+
+ 117          /**
+ 118           * @brief 修改高速内部RC振荡器频率为16.6MHz
+ 119           * 使串口通讯波特率误差率更低
+ 120           *
+ 121           */
+ 122          void MODIFY_HIRC_166(void) {
+ 123   1        unsigned char hircmap0, hircmap1;
+ 124   1        unsigned int trimvalue16bit;
+ 125   1      
+ 126   1        /* Since only power on will  reload RCTRIM0 and RCTRIM1 value, check power on flag*/
+ 127   1        if ((PCON & SET_BIT4) == SET_BIT4) {
+ 128   2          hircmap0 = RCTRIM0;
+ 129   2          hircmap1 = RCTRIM1;
+ 130   2          trimvalue16bit = ((hircmap0 << 1) + (hircmap1 & 0x01));
+ 131   2          trimvalue16bit = trimvalue16bit - 15;
+ 132   2          hircmap1 = trimvalue16bit & 0x01;
+ 133   2          hircmap0 = trimvalue16bit >> 1;
+ 134   2          TA = 0XAA;
+ 135   2          TA = 0X55;
+ 136   2          RCTRIM0 = hircmap0;
+ 137   2          TA = 0XAA;
+ 138   2          TA = 0X55;
+ 139   2          RCTRIM1 = hircmap1;
+ 140   2          /* After modify HIRC value, clear power on flag */
+ 141   2          PCON &= CLR_BIT4;
+ 142   2        }
+ 143   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    271    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

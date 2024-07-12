@@ -1,0 +1,182 @@
+C51 COMPILER V9.59.0.0   PT6312                                                            08/09/2019 05:45:34 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE PT6312
+OBJECT MODULE PLACED IN ..\output\pt6312.obj
+COMPILER INVOKED BY: C:\soft\Keil_v5\C51\BIN\C51.EXE ..\source\devices\pt6312.c OPTIMIZE(8,SPEED) BROWSE DEFINE(FOSC_160
+                    -000) DEBUG OBJECTEXTEND PRINT(.\Listings\pt6312.lst) TABS(2) OBJECT(..\output\pt6312.obj)
+
+line level    source
+
+   1          /**
+   2           * @file pt6312.c
+   3           * @author mangolu (mangolu81@gmail.com)
+   4           * @brief PT6312操作相关实现
+   5           * @version 1.0.0
+   6           * @date 2019-08-05
+   7           * 
+   8           * @copyright Copyright (c) 2019 mangolu All righits reserved
+   9           * 
+  10           */
+  11          #include "pt6312.h"
+  12          #include "../devices/font_seg13.h"
+  13          
+  14          /**
+  15           * @brief 向PT6312发送数据，内部函数
+  16           * 
+  17           * @param ucData 要发送的数据
+  18           */
+  19          void PT6312_Send(unsigned char ucData) {
+  20   1        unsigned char ucI;
+  21   1      
+  22   1        for(ucI = 0; ucI < 8; ucI ++) {
+  23   2          PT6312_CLK_L();
+  24   2      
+  25   2          if(ucData & 0x01) {
+  26   3            PT6312_DIN_H();
+  27   3          } else {
+  28   3            PT6312_DIN_L();
+  29   3          }
+  30   2      
+  31   2          ucData >>= 1;
+  32   2          PT6312_CLK_H();
+  33   2        }
+  34   1      }
+  35          
+  36          /**
+  37           * @brief 向PT6312发送锁存信号，内部函数
+  38           * 
+  39           */
+  40          void PT6312_Send_STB(void) {
+  41   1        PT6312_STB_H();
+  42   1        PT6312_STB_L();
+  43   1      }
+  44          
+  45          /**
+  46           * @brief PT6312初始化
+  47           * 
+  48           */
+  49          void PT6312_Initial(void) {
+  50   1        unsigned char ucI;
+  51   1      
+  52   1        PT6312_Send_STB();
+  53   1      
+  54   1        /* 发送命令2，写数据 */
+C51 COMPILER V9.59.0.0   PT6312                                                            08/09/2019 05:45:34 PAGE 2   
+
+  55   1        PT6312_Send(CMD2_CMD | WR_TO_DISPLAY_MODE_CMD);
+  56   1        PT6312_Send_STB();
+  57   1      
+  58   1        /* 发送命令3，清空内存数据 */
+  59   1        PT6312_Send(CMD3_CMD);
+  60   1      
+  61   1        for(ucI = 0; ucI < 8; ucI ++) { /* 清空内存数据 */
+  62   2          PT6312_Send(0x00);
+  63   2          PT6312_Send(0x00);
+  64   2        }
+  65   1      
+  66   1        PT6312_Send_STB();
+  67   1      
+  68   1        /* 发送命令1，设置显示模式 */
+  69   1        PT6312_Send(CMD1_CMD | PT6312_MODE);
+  70   1        PT6312_Send_STB();
+  71   1      
+  72   1        /* 设置命令4，开启显示 */
+  73   1        PT6312_Send(CMD4_CMD | DISPLAY_ON | PT6312_LIGHT);
+  74   1        PT6312_Send_STB();
+  75   1      
+  76   1      }
+  77          
+  78          /**
+  79           * @brief 显示PT6312当前设置模式的所有码段
+  80           * 
+  81           */
+  82          void PT6312_Display_All(void) {
+  83   1        unsigned char ucI;
+  84   1      
+  85   1        /* 发送命令2，写数据 */
+  86   1        PT6312_Send(CMD2_CMD | WR_TO_DISPLAY_MODE_CMD);
+  87   1        PT6312_Send_STB();
+  88   1      
+  89   1        /* 发送命令3，写内存数据 */
+  90   1        PT6312_Send(CMD3_CMD);
+  91   1      
+  92   1        for(ucI = 0; ucI < 8; ucI ++) {
+  93   2          PT6312_Send(0xFF);
+  94   2          PT6312_Send(0xFF);
+  95   2        }
+  96   1      
+  97   1        PT6312_Send_STB();
+  98   1      }
+  99          
+ 100          /**
+ 101           * @brief 刷新PT6312显示缓存
+ 102           * 
+ 103           * @param *uiBuffer 要刷新进PT6312缓存的数据源
+ 104           * PT6312内部总共有8个16字节的缓存，要根据实际情况选择相应的刷新位数
+ 105           */
+ 106          void PT6312_Update(unsigned int *uiBuffer) {
+ 107   1        unsigned char ucI;
+ 108   1      
+ 109   1        /* 发送命令2，写数据 */
+ 110   1        PT6312_Send(CMD2_CMD | WR_TO_DISPLAY_MODE_CMD);
+ 111   1        PT6312_Send_STB();
+ 112   1      
+ 113   1        /* 发送命令3，写内存数据 */
+ 114   1        PT6312_Send(CMD3_CMD);
+ 115   1      
+ 116   1        for(ucI = 0; ucI < 7; ucI ++) {
+C51 COMPILER V9.59.0.0   PT6312                                                            08/09/2019 05:45:34 PAGE 3   
+
+ 117   2          PT6312_Send((unsigned char)((*(uiBuffer + ucI) >> 8) & 0x00FF));
+ 118   2          PT6312_Send((unsigned char)(*(uiBuffer + ucI) & 0x00FF));
+ 119   2        }
+ 120   1      
+ 121   1        PT6312_Send_STB();
+ 122   1      }
+ 123          
+ 124          /**
+ 125           * @brief 左边第一个时钟点操作
+ 126           * 这个操作是通过对单片机缓存数据操作实现的
+ 127           * 
+ 128           * @param *ucBuffer 缓冲
+ 129           * @param ucONOFF 开关，当为1时点亮，为0时灭
+ 130           */
+ 131          void VFD_DOT1_ONOFF(unsigned int *ucBuffer,unsigned char ucONOFF) {
+ 132   1      
+ 133   1        if(ucONOFF == 1) {
+ 134   2          *(ucBuffer + 2) |= SEG13_DP;
+ 135   2        } else {
+ 136   2          *(ucBuffer + 2) &= ~SEG13_DP;
+ 137   2        }
+ 138   1      }
+ 139          
+ 140          /**
+ 141           * @brief 左边第二个时钟点操作
+ 142           * 这个操作是通过对单片机缓存数据操作实现的
+ 143           * 
+ 144           * @param *ucBuffer 缓冲
+ 145           * @param ucONOFF 开关，当为1时点亮，为0时灭
+ 146           */
+ 147          void VFD_DOT2_ONOFF(unsigned int *ucBuffer,unsigned char ucONOFF) {
+ 148   1      
+ 149   1        if(ucONOFF == 1) {
+ 150   2          *(ucBuffer + 4) |= SEG13_DP;
+ 151   2        } else {
+ 152   2          *(ucBuffer + 4) &= ~SEG13_DP;
+ 153   2        }
+ 154   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    311    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
