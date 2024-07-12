@@ -1,0 +1,351 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    08/05/2019  22:57:18  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\SOFT\KEIL_V5\C51\BIN\BL51.EXE ..\output\font_seg13.obj, ..\output\main.obj, ..\output\pt6312.obj TO ..\output\PT6312B
+>>  PRINT (.\Listings\PT6312B.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  ..\output\font_seg13.obj (FONT_SEG13)
+  ..\output\main.obj (MAIN)
+  ..\output\pt6312.obj (PT6312)
+  C:\SOFT\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\SOFT\KEIL_V5\C51\LIB\C51S.LIB (?C?ILDPTR)
+  C:\SOFT\KEIL_V5\C51\LIB\C51S.LIB (?C?ILDOPTR)
+  C:\SOFT\KEIL_V5\C51\LIB\C51S.LIB (?C?ISTPTR)
+  C:\SOFT\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+
+
+LINK MAP OF MODULE:  ..\output\PT6312B (FONT_SEG13)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     000FH     UNIT         ?DT?MAIN
+            DATA    0017H     0004H     UNIT         _DATA_GROUP_
+            IDATA   001BH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     01D1H     UNIT         ?PR?MAIN?MAIN
+            CODE    01D4H     00C0H     UNIT         ?CO?FONT_SEG13
+            CODE    0294H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0320H     0082H     UNIT         ?C?LIB_CODE
+            CODE    03A2H     004BH     UNIT         ?PR?_PT6312_UPDATE?PT6312
+            CODE    03EDH     0035H     UNIT         ?PR?_VFD_DOT1_ONOFF?MAIN
+            CODE    0422H     0035H     UNIT         ?PR?_VFD_DOT2_ONOFF?MAIN
+            CODE    0457H     0032H     UNIT         ?PR?PT6312_INITIAL?PT6312
+            CODE    0489H     002CH     UNIT         ?PR?_PT6312_SEND?PT6312
+            CODE    04B5H     001FH     UNIT         ?PR?PT6312_DISPLAY_ALL?PT6312
+            CODE    04D4H     000EH     UNIT         ?PR?DELAY?MAIN
+            CODE    04E2H     000EH     UNIT         ?CO?MAIN
+            CODE    04F0H     0005H     UNIT         ?PR?PT6312_SEND_STB?PT6312
+            CODE    04F5H     0004H     UNIT         ?C_INITSEG
+
+
+
+OVERLAY MAP OF MODULE:   ..\output\PT6312B (FONT_SEG13)
+
+
+SEGMENT                                 DATA_GROUP 
+  +--> CALLED SEGMENT                 START    LENGTH
+-----------------------------------------------------
+?C_C51STARTUP                         -----    -----
+  +--> ?PR?MAIN?MAIN
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  08/05/2019  22:57:18  PAGE 2
+
+
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                         0017H    0001H
+  +--> ?PR?PT6312_INITIAL?PT6312
+  +--> ?PR?PT6312_DISPLAY_ALL?PT6312
+  +--> ?PR?DELAY?MAIN
+  +--> ?CO?MAIN
+  +--> ?PR?_PT6312_UPDATE?PT6312
+  +--> ?CO?FONT_SEG13
+  +--> ?PR?_VFD_DOT1_ONOFF?MAIN
+  +--> ?PR?_VFD_DOT2_ONOFF?MAIN
+
+?PR?PT6312_INITIAL?PT6312             -----    -----
+  +--> ?PR?PT6312_SEND_STB?PT6312
+  +--> ?PR?_PT6312_SEND?PT6312
+
+?PR?_PT6312_SEND?PT6312               -----    -----
+  +--> ?PR?PT6312_SEND_STB?PT6312
+
+?PR?PT6312_DISPLAY_ALL?PT6312         -----    -----
+  +--> ?PR?_PT6312_SEND?PT6312
+  +--> ?PR?PT6312_SEND_STB?PT6312
+
+?PR?_PT6312_UPDATE?PT6312             0018H    0003H
+  +--> ?PR?_PT6312_SEND?PT6312
+  +--> ?PR?PT6312_SEND_STB?PT6312
+
+?PR?_VFD_DOT1_ONOFF?MAIN              0018H    0003H
+
+?PR?_VFD_DOT2_ONOFF?MAIN              0018H    0003H
+
+
+
+SYMBOL TABLE OF MODULE:  ..\output\PT6312B (FONT_SEG13)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        FONT_SEG13
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:01D4H         PUBLIC        SEG13_Char_Code
+  -------         ENDMOD        FONT_SEG13
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0008H         PUBLIC        ucDotFlag
+  D:0090H         PUBLIC        P1
+  B:0090H.4       PUBLIC        HV_ON
+  C:0003H         PUBLIC        main
+  C:03EDH         PUBLIC        _VFD_DOT1_ONOFF
+  C:0422H         PUBLIC        _VFD_DOT2_ONOFF
+  D:0009H         PUBLIC        Dis_Buffer
+  C:04E2H         PUBLIC        VFD_Test
+  C:04D4H         PUBLIC        Delay
+  -------         PROC          MAIN
+  -------         DO            
+  D:0017H         SYMBOL        ucI
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  08/05/2019  22:57:18  PAGE 3
+
+
+  -------         ENDDO         
+  C:0003H         LINE#         51
+  C:0003H         LINE#         53
+  C:0006H         LINE#         55
+  C:0008H         LINE#         57
+  C:000BH         LINE#         59
+  C:000EH         LINE#         60
+  C:0011H         LINE#         61
+  C:0014H         LINE#         62
+  C:0017H         LINE#         63
+  C:001AH         LINE#         64
+  C:001DH         LINE#         65
+  C:0020H         LINE#         66
+  C:0023H         LINE#         67
+  C:0026H         LINE#         68
+  C:0029H         LINE#         69
+  C:002CH         LINE#         70
+  C:002FH         LINE#         71
+  C:0032H         LINE#         72
+  C:003BH         LINE#         73
+  C:003EH         LINE#         74
+  C:0041H         LINE#         75
+  C:0044H         LINE#         76
+  C:0047H         LINE#         77
+  C:004AH         LINE#         78
+  C:004DH         LINE#         79
+  C:0050H         LINE#         80
+  C:0053H         LINE#         81
+  C:0056H         LINE#         82
+  C:0059H         LINE#         83
+  C:005CH         LINE#         84
+  C:005FH         LINE#         86
+  C:006BH         LINE#         87
+  C:0077H         LINE#         88
+  C:0083H         LINE#         89
+  C:008FH         LINE#         90
+  C:009BH         LINE#         91
+  C:00A7H         LINE#         92
+  C:00B3H         LINE#         93
+  C:00BCH         LINE#         94
+  C:00BFH         LINE#         95
+  C:00C2H         LINE#         96
+  C:00C5H         LINE#         97
+  C:00C8H         LINE#         98
+  C:00CBH         LINE#         99
+  C:00CEH         LINE#         100
+  C:00D1H         LINE#         101
+  C:00D4H         LINE#         102
+  C:00D7H         LINE#         103
+  C:00DAH         LINE#         104
+  C:00DDH         LINE#         105
+  C:00E0H         LINE#         107
+  C:00E0H         LINE#         110
+  C:00EEH         LINE#         111
+  C:0104H         LINE#         112
+  C:011AH         LINE#         113
+  C:0130H         LINE#         114
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  08/05/2019  22:57:18  PAGE 4
+
+
+  C:0146H         LINE#         115
+  C:015CH         LINE#         116
+  C:0172H         LINE#         117
+  C:0188H         LINE#         120
+  C:018EH         LINE#         121
+  C:0198H         LINE#         122
+  C:01A3H         LINE#         123
+  C:01A6H         LINE#         124
+  C:01ACH         LINE#         125
+  C:01B5H         LINE#         126
+  C:01C0H         LINE#         127
+  C:01C3H         LINE#         128
+  C:01C3H         LINE#         130
+  C:01CCH         LINE#         131
+  C:01CFH         LINE#         133
+  -------         ENDPROC       MAIN
+  -------         PROC          DELAY
+  -------         DO            
+  D:0007H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  D:0005H         SYMBOL        k
+  -------         ENDDO         
+  C:04D4H         LINE#         141
+  C:04D4H         LINE#         144
+  C:04D5H         LINE#         145
+  C:04D7H         LINE#         146
+  C:04D9H         LINE#         147
+  C:04DBH         LINE#         149
+  C:04DBH         LINE#         150
+  C:04DBH         LINE#         151
+  C:04DDH         LINE#         152
+  C:04DFH         LINE#         153
+  C:04E1H         LINE#         154
+  -------         ENDPROC       DELAY
+  -------         PROC          _VFD_DOT1_ONOFF
+  D:0018H         SYMBOL        ucBuffer
+  D:0005H         SYMBOL        ucONOFF
+  C:03EDH         LINE#         163
+  C:03F3H         LINE#         165
+  C:03F8H         LINE#         166
+  C:0407H         LINE#         167
+  C:0409H         LINE#         168
+  C:0421H         LINE#         169
+  C:0421H         LINE#         170
+  -------         ENDPROC       _VFD_DOT1_ONOFF
+  -------         PROC          _VFD_DOT2_ONOFF
+  D:0018H         SYMBOL        ucBuffer
+  D:0005H         SYMBOL        ucONOFF
+  C:0422H         LINE#         179
+  C:0428H         LINE#         181
+  C:042DH         LINE#         182
+  C:043CH         LINE#         183
+  C:043EH         LINE#         184
+  C:0456H         LINE#         185
+  C:0456H         LINE#         186
+  -------         ENDPROC       _VFD_DOT2_ONOFF
+  -------         ENDMOD        MAIN
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  08/05/2019  22:57:18  PAGE 5
+
+
+
+  -------         MODULE        PT6312
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  C:0457H         PUBLIC        PT6312_Initial
+  C:04B5H         PUBLIC        PT6312_Display_All
+  C:04F0H         PUBLIC        PT6312_Send_STB
+  B:0090H.2       PUBLIC        PT6312_CLK
+  B:0090H.1       PUBLIC        PT6312_DIN
+  C:03A2H         PUBLIC        _PT6312_Update
+  B:0090H.3       PUBLIC        PT6312_STB
+  C:0493H         PUBLIC        _PT6312_Send
+  C:0489H         SYMBOL        L?0021
+  -------         PROC          L?0020
+  -------         ENDPROC       L?0020
+  C:0489H         SYMBOL        L?0021
+  -------         PROC          _PT6312_SEND
+  D:0007H         SYMBOL        ucData
+  -------         DO            
+  D:0006H         SYMBOL        ucI
+  -------         ENDDO         
+  C:0493H         LINE#         18
+  C:0493H         LINE#         21
+  C:049FH         LINE#         22
+  C:04A1H         LINE#         24
+  C:04A5H         LINE#         25
+  C:04A7H         LINE#         26
+  C:04A9H         LINE#         27
+  C:04ABH         LINE#         28
+  C:04ABH         LINE#         30
+  C:04AFH         LINE#         31
+  C:04B1H         LINE#         32
+  C:04B4H         LINE#         33
+  -------         ENDPROC       _PT6312_SEND
+  -------         PROC          PT6312_SEND_STB
+  C:04F0H         LINE#         39
+  C:04F0H         LINE#         40
+  C:04F2H         LINE#         41
+  C:04F4H         LINE#         42
+  -------         ENDPROC       PT6312_SEND_STB
+  -------         PROC          PT6312_INITIAL
+  -------         DO            
+  D:0005H         SYMBOL        ucI
+  -------         ENDDO         
+  C:0457H         LINE#         48
+  C:0457H         LINE#         51
+  C:045AH         LINE#         54
+  C:045AH         LINE#         55
+  C:045AH         LINE#         58
+  C:045DH         LINE#         60
+  C:0469H         LINE#         61
+  C:046EH         LINE#         62
+  C:0473H         LINE#         63
+  C:0476H         LINE#         65
+  C:0479H         LINE#         68
+  C:047EH         LINE#         69
+  C:0481H         LINE#         72
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  08/05/2019  22:57:18  PAGE 6
+
+
+  C:0486H         LINE#         73
+  -------         ENDPROC       PT6312_INITIAL
+  -------         PROC          PT6312_DISPLAY_ALL
+  -------         DO            
+  D:0005H         SYMBOL        ucI
+  -------         ENDDO         
+  C:04B5H         LINE#         81
+  C:04B5H         LINE#         85
+  C:04B5H         LINE#         86
+  C:04B5H         LINE#         89
+  C:04B8H         LINE#         91
+  C:04C4H         LINE#         92
+  C:04C9H         LINE#         93
+  C:04CEH         LINE#         94
+  C:04D1H         LINE#         96
+  -------         ENDPROC       PT6312_DISPLAY_ALL
+  -------         PROC          _PT6312_UPDATE
+  D:0018H         SYMBOL        uiBuffer
+  -------         DO            
+  D:0005H         SYMBOL        ucI
+  -------         ENDDO         
+  C:03A2H         LINE#         105
+  C:03A8H         LINE#         109
+  C:03A8H         LINE#         110
+  C:03A8H         LINE#         113
+  C:03ABH         LINE#         115
+  C:03B7H         LINE#         116
+  C:03D0H         LINE#         117
+  C:03E7H         LINE#         118
+  C:03EAH         LINE#         120
+  -------         ENDPROC       _PT6312_UPDATE
+  -------         ENDMOD        PT6312
+
+  -------         MODULE        ?C?ILDPTR
+  C:0320H         PUBLIC        ?C?ILDPTR
+  -------         ENDMOD        ?C?ILDPTR
+
+  -------         MODULE        ?C?ILDOPTR
+  C:034BH         PUBLIC        ?C?ILDOPTR
+  -------         ENDMOD        ?C?ILDOPTR
+
+  -------         MODULE        ?C?ISTPTR
+  C:0383H         PUBLIC        ?C?ISTPTR
+  -------         ENDMOD        ?C?ISTPTR
+
+Program Size: data=28.0 xdata=0 code=1273
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

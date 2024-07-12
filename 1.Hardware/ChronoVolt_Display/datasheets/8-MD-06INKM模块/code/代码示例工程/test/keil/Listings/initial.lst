@@ -1,0 +1,90 @@
+C51 COMPILER V9.59.0.0   INITIAL                                                           11/01/2019 02:07:43 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE INITIAL
+OBJECT MODULE PLACED IN ..\output\initial.obj
+COMPILER INVOKED BY: C:\soft\Keil_v5\C51\BIN\C51.EXE ..\source\user\initial.c OPTIMIZE(8,SPEED) BROWSE DEFINE(FOSC_16000
+                    -0) DEBUG OBJECTEXTEND PRINT(.\Listings\initial.lst) TABS(2) OBJECT(..\output\initial.obj)
+
+line level    source
+
+   1          /**
+   2           * @file initial.c
+   3           * @author mangolu (mangolu81@gmail.com)
+   4           * @brief N76E003系统初始化函数定义
+   5           * @version 1.0.0
+   6           * @date 2019-04-19
+   7           *
+   8           * @copyright Copyright (c) 2018 mangolu All rights reserved
+   9           *
+  10           */
+  11          
+  12          /** 所需头文件开始>>> */
+  13          
+  14          #include "Initial.h"
+  15          #include "../common/common.h"
+  16          #include "config.h"
+  17          
+  18          #include "../n76e003/gpio.h"
+  19          #include "../n76e003/clock.h"
+  20          
+  21          #include "../devices/vfd_8md06inkm.h"
+  22          
+  23          /** 所需头文件结束<<< */
+  24          
+  25          /**
+  26           * @brief 初始化系统
+  27           * 包括初始化MCU和外部设备。
+  28           *
+  29           */
+  30          void Initial_System(void) {
+  31   1        /** 初始化MCU */
+  32   1        Initial_MCU();
+  33   1        /** 初始化外部设备 */
+  34   1        Initial_Devices();
+  35   1      }
+  36          
+  37          /**
+  38           * @brief 初始化MCU
+  39           * 用于初始化MCU系统内部寄存器定时计数器串口等的操作。
+  40           *
+  41           */
+  42          void Initial_MCU(void) {
+  43   1        /** 设置系统频率 */
+  44   1        System_Clock_Select(High_Speed_Internal_RC);
+  45   1        // System_Clock_Divid(24);  /**系统分频 */
+  46   1        System_Clock_Output(ON);  /** P11输出FOSC */
+  47   1        SET_P11_PushPull_Mode;  /** 设置P1^0为推挽输出模式 *//** P11输出FOSC */
+  48   1      
+  49   1      
+  50   1      }
+  51          
+  52          /**
+  53           * @brief 初始化外部设备
+  54           * 用于初始化外部设备，如按键、LCM等。
+C51 COMPILER V9.59.0.0   INITIAL                                                           11/01/2019 02:07:43 PAGE 2   
+
+  55           *
+  56           */
+  57          void Initial_Devices(void) {
+  58   1      
+  59   1        /** 8MD06INKM接口初始化 */
+  60   1        VFD_8MD06INKM_Port_Init();
+  61   1        /** 初始化8MD06INKM_Init */
+  62   1        VFD_8MD06INKM_Init();
+  63   1      
+  64   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     29    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

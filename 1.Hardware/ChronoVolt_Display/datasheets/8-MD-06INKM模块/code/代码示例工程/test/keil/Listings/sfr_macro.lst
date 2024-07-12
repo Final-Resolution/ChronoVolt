@@ -1,0 +1,45 @@
+C51 COMPILER V9.59.0.0   SFR_MACRO                                                         11/01/2019 02:07:43 PAGE 1   
+
+
+C51 COMPILER V9.59.0.0, COMPILATION OF MODULE SFR_MACRO
+OBJECT MODULE PLACED IN ..\output\sfr_macro.obj
+COMPILER INVOKED BY: C:\soft\Keil_v5\C51\BIN\C51.EXE ..\source\n76e003\sfr_macro.c OPTIMIZE(8,SPEED) BROWSE DEFINE(FOSC_
+                    -160000) DEBUG OBJECTEXTEND PRINT(.\Listings\sfr_macro.lst) TABS(2) OBJECT(..\output\sfr_macro.obj)
+
+line level    source
+
+   1          /**
+   2           * @file sfr_macro.c
+   3           * @author mangolu (mangolu81@gmail.com)
+   4           * @brief 特殊功能寄存器操作宏定义实现
+   5           * @version 1.0.0
+   6           * @date 2019-05-06
+   7           * 
+   8           * @copyright Copyright (c) 2019 mangolu All righits reserved
+   9           * 
+  10           */
+  11          /** 所需头文件开始>>> */
+  12          
+  13          #include "sfr_macro.h"
+  14          
+  15          /** 所需头文件结束<<< */
+  16          
+  17          /** 需要自行定义部分开始>>> */
+  18          
+  19          /** 需要自行定义部分结束<<< */
+  20          
+  21          bit BIT_TMP;  /** 比特位存储临时变量 */
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   ----    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =      1    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

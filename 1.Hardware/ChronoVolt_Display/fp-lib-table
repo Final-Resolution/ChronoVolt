@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "ChronoVolt_Lib")(type "KiCad")(uri "${KIPRJMOD}/modules/ChronoVolt_Lib.pretty")(options "")(descr ""))
+)
